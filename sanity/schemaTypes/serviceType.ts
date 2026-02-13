@@ -25,6 +25,12 @@ export const serviceType = defineType({
       validation: (R) => R.required().min(5).max(100).warning('Keep the title concise and meaningful'),
     }),
     defineField({
+      name: 'overviewLabel',
+      title: 'Overview Label',
+      type: 'string',
+      validation: (R) => R.required().min(5).max(50).warning('Keep the overvie label concise and meaningful'),
+    }),
+    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',

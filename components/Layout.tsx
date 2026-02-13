@@ -1,4 +1,4 @@
-import Navbar from "./layout/Navbar";
+import Navbar from "./layout/navbar/Navbar";
 import Footer from "./layout/Footer";
 import ScrollToTop from "./ScrollToTop";
 

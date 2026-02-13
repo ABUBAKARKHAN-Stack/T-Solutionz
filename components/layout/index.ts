@@ -1,5 +1,5 @@
 import ContainerLayout from "./ContainerLayout";
-import Navbar from "./Navbar";
+import Navbar from "./navbar/Navbar";
 import Footer from "./Footer";
 import PageTransition from "./PageTransition";
 

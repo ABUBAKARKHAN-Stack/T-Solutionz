@@ -1,14 +1,22 @@
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { motion, AnimatePresence } from "motion/react";
+import { VariantProps } from "class-variance-authority";
+import { Button, buttonVariants } from "./ui/button";
 
-const ThemeToggle = () => {
+type Props = {
+  variant?: VariantProps<typeof buttonVariants>["variant"];
+}
+const ThemeToggle = ({
+  variant = "default"
+}: Props) => {
   const { theme, setTheme } = useTheme();
 
   return (
-    <button
+    <Button
+      variant={variant}
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="relative hover:cursor-pointer w-10 h-10 rounded-full flex items-center justify-center text-foreground/70 hover:text-foreground transition-colors duration-300 hover:bg-accent/10"
+      className="relative hover:cursor-pointer w-10 h-10 rounded-full flex items-center justify-center text-foreground/70 hover:text-foreground transition-colors duration-300 hover:bg-accent/10 bg-transparent"
       aria-label="Toggle theme"
     >
       <AnimatePresence mode="wait">
@@ -34,7 +42,7 @@ const ThemeToggle = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </button>
+    </Button>
   );
 };
 

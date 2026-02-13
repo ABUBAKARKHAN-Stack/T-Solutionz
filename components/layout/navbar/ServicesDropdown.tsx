@@ -44,13 +44,13 @@ const ServicesDropdown = ({
             <AnimatePresence>
                 {showServices && hasDropdown && (
                     <motion.div
-                        className="glass z-999  rounded-2xl border border-border/50 shadow-2xl p-4 overflow-hidden top-[calc(0.75rem+100%)] right-0 w-107.5"
+                        className="glass z-999 rounded-2xl border border-border/50 shadow-2xl p-4 overflow-hidden top-[calc(0.75rem+100%)] right-0 w-107.5"
                         variants={dropdownVariants}
                         initial="hidden"
                         style={{
                             position: "fixed",
                             top: rect.bottom + 12,
-                            left: rect.right - 430, // dropdown width
+                            left: rect.right - 430,
                         }}
                         animate="visible"
                         exit="exit"

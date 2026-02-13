@@ -118,10 +118,10 @@ const DesktopNav = ({ setOpen, open }: Props) => {
                 <div className="flex items-center gap-2 lg:hidden">
                     <ThemeToggle />
                     <Button
-                        onClick={() => setOpen(!open)}
+                        onClick={() => setOpen(true)}
                         className="w-10 h-10 flex items-center justify-center text-foreground rounded-full bg-transparent hover:bg-accent/10 transition-colors"
                     >
-                        {open ? <X className="size-5!" /> : <Menu className="size-5!" />}
+                        {!open && <Menu className="size-5!" />}
                     </Button>
                 </div>
 

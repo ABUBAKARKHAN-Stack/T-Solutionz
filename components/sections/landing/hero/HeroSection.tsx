@@ -15,7 +15,6 @@ import { heroContent } from "@/data/landing.data";
 import {
     HighlightedBrandName,
     ContactDrawer
-
 } from "@/components/shared/";
 import { useServices } from "@/context/ServiceContext";
 import { getIconByName } from "@/lib/icon-mapper";
@@ -113,7 +112,7 @@ const HeroSection = () => {
                             </motion.p>
 
                             <motion.p
-                                className="text-base md:text-lg text-muted-foreground max-w-lg leading-[1.8] font-light mb-4"
+                                className="text-base md:text-lg text-muted-foreground max-w-lg leading-[1.8] font-light mb-10"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6, delay: 0.6 }}
@@ -121,17 +120,10 @@ const HeroSection = () => {
                                 <HighlightedBrandName
                                     animate
                                     once
-                                /> is a digital solutions studio focused on building reliable and scalable technology.
+                                /> is a digital solutions agency focused on building reliable and scalable technology.
                             </motion.p>
 
-                            <motion.p
-                                className="text-base md:text-lg text-muted-foreground max-w-lg leading-[1.8] font-light mb-10"
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.6, delay: 0.5 }}
-                            >
-                                {heroContent.subtext}
-                            </motion.p>
+
 
                             {/* CTAs */}
                             <motion.div
@@ -180,25 +172,27 @@ const HeroSection = () => {
                                     </p>
 
                                     <div className="space-y-4 relative z-10">
-                                        {servicesOverview.map((service, i) => {
+                                        {servicesOverview.filter(s => s.featured ).map((service, i) => {
                                             const Icon = getIconByName(service.icon)
                                             return (
-                                                <motion.div
-                                                    key={service._id}
-                                                    className="flex items-center gap-4 p-3 rounded-xl hover:bg-accent/5 transition-colors duration-300 cursor-default"
-                                                    initial={{ opacity: 0, x: -15 }}
-                                                    animate={{ opacity: 1, x: 0 }}
-                                                    transition={{ duration: 0.5, delay: 0.9 + i * 0.1 }}
-                                                >
-                                                    <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center shrink-0">
-                                                        <Icon className="h-4 w-4 text-accent" />
-                                                    </div>
-                                                    <div>
-                                                        <p className="text-sm font-medium text-foreground">{service.title}</p>
-                                                        <p className="text-xs text-muted-foreground">{service.description}</p>
-                                                    </div>
-                                                    <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground/40 ml-auto" />
-                                                </motion.div>
+                                                <Link key={service._id} href={`/services/${service.slug}`}>
+                                                    <motion.div
+                                                        className="group flex items-center gap-4 p-3 rounded-xl border border-transparent hover:border-accent/15 hover:bg-accent/5 transition-all duration-300"
+                                                        initial={{ opacity: 0, x: -15 }}
+                                                        animate={{ opacity: 1, x: 0 }}
+                                                        transition={{ duration: 0.5, delay: 0.9 + i * 0.1 }}
+                                                    >
+
+                                                        <div className="w-10 h-10 rounded-xl bg-accent/10 group-hover:bg-accent/20 flex items-center justify-center shrink-0 transition-colors duration-300">
+                                                            <Icon className="size-4 text-accent" />
+                                                        </div>
+                                                        <div>
+                                                            <p className="text-sm font-medium text-foreground">{service.title}</p>
+                                                            <p className="text-xs text-muted-foreground ">{service.description}</p>
+                                                        </div>
+                                                        <ArrowUpRight className="size-3.5 text-muted-foreground/30 group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300 shrink-0" />
+                                                    </motion.div>
+                                                </Link>
                                             )
                                         })}
                                     </div>

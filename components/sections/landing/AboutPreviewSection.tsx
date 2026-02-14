@@ -1,12 +1,16 @@
-import { Link } from "react-router-dom";
-import { ArrowRight, Target, Users, Globe } from "lucide-react";
+"use client"
+
+import { ArrowRight } from "lucide-react";
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
-import AnimatedSection from "@/components/AnimatedSection";
+import AnimatedSection from "@/components/shared/AnimatedSection";
 import MagneticButton from "@/components/shared/MagneticButton";
 import { Button } from "@/components/ui/button";
-import aboutPreviewImg from "@/assets/about-preview.jpg";
 import { stats, aboutHighlights } from "@/constants";
+import Link from "next/link";
+import Image from "next/image";
+import { ContainerLayout } from "../../layout";
+import { HighlightedBrandName } from "@/components/shared";
 
 const TickerNumber = ({ value, suffix, delay }: { value: number; suffix: string; delay: number }) => {
   const [count, setCount] = useState(0);
@@ -40,9 +44,12 @@ const TickerNumber = ({ value, suffix, delay }: { value: number; suffix: string;
 const AboutPreviewSection = () => {
   return (
     <section className="section-padding bg-background relative overflow-hidden">
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[150px]" />
-      <div className="container mx-auto px-4 lg:px-8 relative z-10">
+
+      <div className="absolute bottom-0 left-0 w-125 h-125 bg-accent/5 rounded-full blur-[150px]" />
+
+      <ContainerLayout className="relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+
           {/* Left — text content */}
           <AnimatedSection direction="left">
             <p className="text-xs font-medium text-accent uppercase tracking-[0.3em] mb-4">About Us</p>
@@ -50,13 +57,16 @@ const AboutPreviewSection = () => {
               Strategy meets <span className="text-accent italic">purpose</span>
             </h2>
             <p className="text-muted-foreground leading-relaxed font-light mb-4">
-              Founded with a vision to redefine corporate consulting, T-Solutions combines strategic expertise
-              with a deep commitment to sustainability. We help businesses grow responsibly — creating value
-              for stakeholders and the planet alike.
+              Founded with a vision to build meaningful digital experiences, <HighlightedBrandName animate={false} /> {" "}
+              combines strategic thinking with modern technology. We help startups and
+              growing businesses scale through smart, reliable, and performance-driven
+              solutions.
             </p>
             <p className="text-sm text-muted-foreground leading-relaxed font-light mb-8">
-              Our multidisciplinary team brings together strategy, technology, and sustainability expertise
-              to deliver outcomes that matter.
+              Our multidisciplinary team blends strategy, design,
+              and development to create systems that are scalable, efficient, and built
+              for long-term growth. We focus on delivering real-world impact, not just
+              ideas.
             </p>
 
             {/* Highlights row */}
@@ -77,7 +87,7 @@ const AboutPreviewSection = () => {
                 variant="outline"
                 className="rounded-full border-border text-foreground hover:bg-accent/10 text-sm px-6 h-10 font-medium"
               >
-                <Link to="/about">
+                <Link href="/about">
                   Learn More About Us <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
@@ -89,13 +99,15 @@ const AboutPreviewSection = () => {
             <div className="relative">
               {/* Main image */}
               <div className="rounded-3xl overflow-hidden shadow-2xl">
-                <img
-                  src={aboutPreviewImg}
+                <Image
+                  src={'/assets/about-preview.jpg'}
                   alt="T-Solutions team collaborating in a modern office"
-                  className="w-full h-[500px] object-cover"
+                  className="w-full h-125 object-cover"
+                  width={500}
+                  height={500}
                   loading="lazy"
                 />
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-foreground/30 via-transparent to-transparent" />
+                <div className="absolute inset-0 rounded-3xl bg-linear-to-t from-foreground/30 via-transparent to-transparent" />
               </div>
 
               {/* Floating stats overlay */}
@@ -120,7 +132,7 @@ const AboutPreviewSection = () => {
             </div>
           </AnimatedSection>
         </div>
-      </div>
+      </ContainerLayout>
     </section>
   );
 };

@@ -1,4 +1,5 @@
-import { motion, type Variants } from "framer-motion";
+"use client"
+import { motion, type Variants } from "motion/react";
 
 interface StaggerChildrenProps {
   children: React.ReactNode;

@@ -1,17 +1,9 @@
-import { Brain, Cloud, Code2, Container, Smartphone } from "lucide-react";
+import { Brain, Cloud, Code2, Container, Mail, MapPin, Phone, Smartphone } from "lucide-react";
 
 export const navLinks = [
     { label: "Home", to: "/" },
     { label: "About", to: "/about" },
     { label: "Services", to: "/services", hasDropdown: true },
-    { label: "Portfolio", to: "/portfolio" },
-    { label: "Contact", to: "/contact" },
-];
-
-export const footerLinks = [
-    { label: "Home", to: "/" },
-    { label: "About", to: "/about" },
-    { label: "Services", to: "/services" },
     { label: "Portfolio", to: "/portfolio" },
     { label: "Contact", to: "/contact" },
 ];
@@ -24,4 +16,15 @@ export const serviceItems = [
   { icon: Container, label: "DevOps & Automation", description: "CI/CD & infrastructure as code" },
   { icon: Brain, label: "AI & Machine Learning", description: "Intelligent automation & insights" },
 ];
-export const footerServices = ["Full Stack Development", "App Development", "Cloud Solutions", "DevOps & Automation", "AI & Machine Learning"];
+export const contactInfo = [
+  {
+    label: "Email",
+    link: "mailto:info@t-solutionz.com",
+    icon: Mail
+  },
+   {
+    label: "Phone",
+    link: "+92-3257030523",
+    icon: Phone
+  },
+]

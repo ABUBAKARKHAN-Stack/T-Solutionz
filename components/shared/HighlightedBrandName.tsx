@@ -1,3 +1,4 @@
+"use client"
 import { motion, useInView } from "motion/react"
 import { useRef } from "react"
 
@@ -26,7 +27,7 @@ const HighlightedBrandName = ({ animate = false, once = false }) => {
                 transition={{
                     duration: 1.2,
                     ease: [0.22, 1, 0.36, 1],
-                    filter: { duration: 0.5, delay: 0.4 },
+                    filter: { duration: 0.5, delay: 0.3 },
                     scale: {
                         type: "spring",
                         stiffness: 100,

@@ -1,6 +1,6 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import SectionHeader from "@/components/shared/SectionHeader";
-import AnimatedSection from "@/components/AnimatedSection";
+import AnimatedSection from "@/components/shared/AnimatedSection";
 import { faqs } from "@/constants";
 
 const FAQSection = () => {

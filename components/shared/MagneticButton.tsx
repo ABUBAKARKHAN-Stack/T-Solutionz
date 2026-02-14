@@ -1,5 +1,6 @@
+"use client"
 import { useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
 interface MagneticButtonProps {
@@ -13,7 +14,7 @@ interface MagneticButtonProps {
 const MagneticButton = ({
   children,
   className,
-  strength = 0.3,
+  strength = 0.25,
   onClick,
 }: MagneticButtonProps) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -36,6 +37,8 @@ const MagneticButton = ({
   return (
     <motion.div
       ref={ref}
+      role="button"
+      aria-roledescription="Magnetic Button"
       className={cn("inline-block", className)}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}

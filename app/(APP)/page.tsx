@@ -1,8 +1,12 @@
 import { PageTransition } from "@/components/layout/";
-import { HeroSection } from "@/components/sections/landing";
-import FeaturesSection from "@/components/sections/landing/FeaturesSection";
+import { 
+  HeroSection,
+  FeaturesSection,
+  ServicesSection,
+  AboutPreviewSection
+ } from "@/components/sections/landing";
 
-const Index = async () => {
+const HomePage = async () => {
   return (
     <PageTransition>
       {/* Hero Section */}
@@ -11,8 +15,14 @@ const Index = async () => {
       {/* Features Section */}
       <FeaturesSection />
 
+      {/* Services Section */}
+      <ServicesSection />
+
+      {/* About Preview Section */}
+      <AboutPreviewSection />
+
     </PageTransition>
   );
 };
 
-export default Index;
+export default HomePage;

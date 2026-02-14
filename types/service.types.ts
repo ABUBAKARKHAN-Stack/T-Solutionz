@@ -31,9 +31,7 @@ export type IServiceOverview = {
   slug: string
 
   image: {
-    asset: {
-      url: string
-    }
+   source:string
     alt: string
   }
 

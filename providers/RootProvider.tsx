@@ -1,7 +1,7 @@
 import { Toaster } from "@/components/ui/sonner"
 import { ThemeProvider } from "next-themes"
 import { ReactNode } from "react"
-import { Navbar } from "@/components/layout/index"
+import { Footer, Navbar } from "@/components/layout/index"
 
 export const RootProvider = ({ children }: { children: ReactNode }) => {
     return (
@@ -14,6 +14,7 @@ export const RootProvider = ({ children }: { children: ReactNode }) => {
             <Toaster />
             <Navbar />
             {children}
+            <Footer />
         </ThemeProvider>
     )
 }

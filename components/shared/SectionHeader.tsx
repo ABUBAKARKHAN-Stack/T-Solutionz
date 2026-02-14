@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import AnimatedSection from "@/components/AnimatedSection";
+import AnimatedSection from "@/components/shared/AnimatedSection";
 import { cn } from "@/lib/utils";
 
 interface SectionHeaderProps {
@@ -16,7 +16,7 @@ interface SectionHeaderProps {
 const SectionHeader = ({ eyebrow, title, description, action, centered, className }: SectionHeaderProps) => {
   if (action) {
     return (
-      <AnimatedSection className={cn("mb-20 flex flex-col md:flex-row md:items-end md:justify-between gap-6", className)}>
+      <AnimatedSection className={cn("mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6", className)}>
         <div>
           <p className="text-xs font-medium text-accent uppercase tracking-[0.3em] mb-4">{eyebrow}</p>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground max-w-lg leading-tight">{title}</h2>

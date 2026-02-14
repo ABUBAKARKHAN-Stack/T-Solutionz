@@ -7,6 +7,8 @@ import MagneticButton from "./MagneticButton";
 import ServiceCard from "./ServiceCard";
 import ContactDrawer from "./ContactDrawer";
 import { StaggerChildren,itemVariants } from "./StaggerChildren";
+import AnimatedSection from "./AnimatedSection";
+
 export {
     HighlightedBrandName,
     MagneticButton,
@@ -17,5 +19,6 @@ export {
     ServiceCard,
     ContactDrawer,
     StaggerChildren,
-    itemVariants
+    itemVariants,
+    AnimatedSection,
 }

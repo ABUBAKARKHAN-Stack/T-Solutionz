@@ -1,13 +1,18 @@
+"use client"
+
 import { Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
-import { footerLinks, footerServices } from "@/constants/navigation.constants";
+import { contactInfo, navLinks } from "@/constants/navigation.constants";
 import Link from "next/link";
+import ContainerLayout from "./ContainerLayout";
+import { useServices } from "@/context/ServiceContext";
 
 const Footer = () => {
+  const { servicesOverview } = useServices()
   return (
     <footer className="bg-background text-foreground">
-      <div className="container mx-auto px-4 lg:px-8 py-20">
+      <ContainerLayout className="py-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          
+
           {/* Brand */}
           <div className="lg:col-span-4">
             <span className="text-3xl font-bold" style={{ fontFamily: "'Playfair Display', serif" }}>
@@ -22,7 +27,7 @@ const Footer = () => {
           <div className="lg:col-span-2">
             <h4 className="font-semibold text-xs uppercase tracking-[0.2em] text-foreground/40 mb-6">Navigation</h4>
             <ul className="space-y-3">
-              {footerLinks.map((link) => (
+              {navLinks.map((link) => (
                 <li key={link.to}>
                   <Link
                     href={link.to}
@@ -40,9 +45,15 @@ const Footer = () => {
           <div className="lg:col-span-3">
             <h4 className="font-semibold text-xs uppercase tracking-[0.2em] text-foreground/40 mb-6">Services</h4>
             <ul className="space-y-3">
-              {footerServices.map((s) => (
-                <li key={s}>
-                  <span className="text-sm text-foreground/60">{s}</span>
+              {servicesOverview.map((link) => (
+                <li key={link.slug}>
+                  <Link
+                    href={`/services${link.slug}`}
+                    className="text-sm text-foreground/60 hover:text-accent transition-colors duration-300 flex items-center gap-1 group"
+                  >
+                    {link.title}
+                    <ArrowUpRight className="h-3 w-3 opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300" />
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -52,26 +63,19 @@ const Footer = () => {
           <div className="lg:col-span-3">
             <h4 className="font-semibold text-xs uppercase tracking-[0.2em] text-foreground/40 mb-6">Contact</h4>
             <ul className="space-y-4">
-              <li className="flex items-center gap-3 text-sm text-foreground/60">
-                <div className="w-8 h-8 rounded-full bg-foreground/10 flex items-center justify-center shrink-0">
-                  <Mail className="h-3.5 w-3.5" />
-                </div>
-                hello@t-solutions.com
-              </li>
-              <li className="flex items-center gap-3 text-sm text-foreground/60">
-                <div className="w-8 h-8 rounded-full bg-foreground/10 flex items-center justify-center shrink-0">
-                  <Phone className="h-3.5 w-3.5" />
-                </div>
-                +1 (555) 123-4567
-              </li>
-              <li className="flex items-start gap-3 text-sm text-foreground/60">
-                <div className="w-8 h-8 rounded-full bg-foreground/10 flex items-center justify-center shrink-0 mt-0.5">
-                  <MapPin className="h-3.5 w-3.5" />
-                </div>
-                123 Green Street, Suite 100
-                <br />
-                Portland, OR 97201
-              </li>
+              {contactInfo.map((item) => (
+                <li >
+                  <a
+                    href={item.link}
+                    className="text-sm text-foreground/60 hover:text-accent transition-colors duration-300 flex items-center gap-3 group"
+                  > <div className="w-8 h-8 rounded-full bg-foreground/10 group-hover:bg-accent/10 flex items-center justify-center shrink-0 transition-colors duration-300">
+                      <item.icon className="h-3.5 w-3.5" />
+                    </div>
+                    {item.link}
+                    <ArrowUpRight className="h-3 w-3 opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300" />
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -87,7 +91,7 @@ const Footer = () => {
             </Link>
           </div>
         </div>
-      </div>
+      </ContainerLayout>
     </footer>
   );
 };

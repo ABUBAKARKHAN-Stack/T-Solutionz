@@ -66,8 +66,9 @@ export const getServicesOverview = async () => {
         const services = data as IServiceOverview[]
         return services ?? []
     } catch (error) {
-        console.log("Failed to fetch service from sanity :: ", error);
-        return []
+        console.log("Failed to fetch service overview from sanity :: ", error);
+        throw error
+
     }
 }
 
@@ -82,6 +83,6 @@ export const getServices = async () => {
         return services ?? []
     } catch (error) {
         console.log("Failed to fetch service from sanity :: ", error);
-        return []
+        throw error
     }
 }

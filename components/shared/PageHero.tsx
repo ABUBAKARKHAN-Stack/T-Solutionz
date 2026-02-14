@@ -1,7 +1,10 @@
-import { motion } from "framer-motion";
+"use client"
+import { motion } from "motion/react";
 import { ReactNode } from "react";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
+import { ContainerLayout } from "../layout";
 
 interface BreadcrumbItem {
   label: string;
@@ -13,7 +16,11 @@ interface PageHeroProps {
   title: ReactNode;
   description: string;
   /** Optional background image for detail pages */
-  backgroundImage?: string;
+  backgroundImage?: {
+    url: string;
+    alt: string
+  };
+
   /** Breadcrumb trail */
   breadcrumbs?: BreadcrumbItem[];
   /** Optional content rendered before the title (e.g., back links, badges) */
@@ -25,13 +32,20 @@ const PageHero = ({ eyebrow, title, description, backgroundImage, breadcrumbs, c
     <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
       {backgroundImage ? (
         <div className="absolute inset-0">
-          <img src={backgroundImage} alt="" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/90 to-background" />
+          <Image
+            fill
+            src={backgroundImage.url}
+            alt={backgroundImage.alt}
+            className="w-full h-full object-cover"
+            loading="lazy"
+            priority
+          />
+          <div className="absolute inset-0 bg-linear-to-b from-background/80 via-background/90 to-background" />
         </div>
       ) : (
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[150px]" />
+        <div className="absolute top-0 right-0 w-125 h-125 bg-accent/5 rounded-full blur-[150px]" />
       )}
-      <div className="container mx-auto px-4 lg:px-8 relative z-10">
+      <ContainerLayout className="relative z-10">
         <motion.div
           className="max-w-3xl"
           initial={{ opacity: 0, y: 30 }}
@@ -66,7 +80,7 @@ const PageHero = ({ eyebrow, title, description, backgroundImage, breadcrumbs, c
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed max-w-xl font-light">{description}</p>
         </motion.div>
-      </div>
+      </ContainerLayout>
     </section>
   );
 };

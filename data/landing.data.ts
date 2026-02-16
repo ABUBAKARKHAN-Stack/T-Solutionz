@@ -93,3 +93,20 @@ export const blogPosts = [
     image: '/assets/blog-scaling.jpg',
   },
 ];
+
+export const portfolioProjects = [
+  {
+    title: "FinEdge Banking Platform",
+    slug: "finedge-banking",
+    category: "Fintech",
+    client: "FinEdge Corp",
+    year: "2025",
+    image: '/assets/portfolio-fintech.jpg',
+    description: "A next-gen digital banking platform with real-time analytics, AI-driven fraud detection, and seamless multi-currency support.",
+    longDescription: "FinEdge needed a complete digital transformation of their legacy banking infrastructure. We architected a cloud-native platform using microservices, implemented real-time transaction monitoring with ML-based fraud detection, and built an intuitive dashboard for both retail and corporate clients. The platform processes over 2M daily transactions with 99.99% uptime.",
+    tags: ["React", "Node.js", "PostgreSQL", "AWS", "Machine Learning"],
+    results: ["2M+ daily transactions processed", "99.99% platform uptime", "60% faster onboarding flow", "85% reduction in fraud incidents"],
+    testimonial: { quote: "T-Solutions delivered a banking platform that exceeded every benchmark we set.", name: "David Park", role: "CTO, FinEdge Corp" },
+  },
+  
+];

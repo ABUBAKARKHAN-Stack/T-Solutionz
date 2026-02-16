@@ -5,6 +5,7 @@ import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { ContainerLayout } from "../layout";
+import { urlFor } from "@/sanity/lib/image";
 
 interface BreadcrumbItem {
   label: string;
@@ -17,7 +18,7 @@ interface PageHeroProps {
   description: string;
   /** Optional background image for detail pages */
   backgroundImage?: {
-    url: string;
+    source: string;
     alt: string
   };
 
@@ -34,7 +35,11 @@ const PageHero = ({ eyebrow, title, description, backgroundImage, breadcrumbs, c
         <div className="absolute inset-0">
           <Image
             fill
-            src={backgroundImage.url}
+            src={
+              urlFor(backgroundImage.source)
+                .quality(90)
+                .url()
+            }
             alt={backgroundImage.alt}
             className="w-full h-full object-cover"
             loading="lazy"
@@ -73,8 +78,7 @@ const PageHero = ({ eyebrow, title, description, backgroundImage, breadcrumbs, c
           {children}
           <p className="text-xs font-medium text-accent uppercase tracking-[0.3em] mb-4">{eyebrow}</p>
           <h1
-            className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-[0.95] tracking-tight mb-6"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-[0.95] tracking-tight mb-6 font-playfair"
           >
             {title}
           </h1>

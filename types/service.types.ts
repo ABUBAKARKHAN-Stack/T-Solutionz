@@ -1,13 +1,12 @@
+import { IImage } from "./shared.types";
+
 export type IService = {
     _id: string
     icon: string
     title: string
-    overviewLabel:string;
+    overviewLabel: string;
     slug: string
-    image: {
-        source:string
-        alt: string
-    }
+    image: IImage
 
     featured: boolean
 
@@ -20,24 +19,19 @@ export type IService = {
     technologies: ServiceTechnology[]
     approach: ServiceApproachStep[]
     differentiators: ServiceDifferentiator[]
-    faqs?: ServiceFAQ[]
+    faqs: ServiceFAQ[]
 }
 
 export type IServiceOverview = {
-  _id: string
-  icon: string
-  title: string
-  overviewLabel:string
-  slug: string
-
-  image: {
-   source:string
-    alt: string
-  }
-
-  description: string
-  tags: string[]
-  featured: boolean
+    _id: string
+    icon: string
+    title: string
+    overviewLabel: string
+    slug: string
+    image: IImage
+    description: string
+    tags: string[]
+    featured: boolean
 }
 
 

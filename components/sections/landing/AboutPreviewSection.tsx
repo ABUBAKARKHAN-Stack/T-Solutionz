@@ -6,7 +6,8 @@ import { useRef, useEffect, useState } from "react";
 import AnimatedSection from "@/components/shared/AnimatedSection";
 import MagneticButton from "@/components/shared/MagneticButton";
 import { Button } from "@/components/ui/button";
-import { stats, aboutHighlights } from "@/constants";
+import { aboutHighlights } from "@/constants";
+import { stats,} from '@/data/shared.data'
 import Link from "next/link";
 import Image from "next/image";
 import { ContainerLayout } from "../../layout";

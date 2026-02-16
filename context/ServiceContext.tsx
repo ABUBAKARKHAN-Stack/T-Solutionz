@@ -1,11 +1,10 @@
 "use client"
 
-import { IService, IServiceOverview } from "@/types/service.types";
+import { IServiceOverview } from "@/types/service.types";
 import { createContext, ReactNode, useContext } from "react";
 
 type ServiceContextType = {
     servicesOverview: IServiceOverview[];
-    services: IService[]
 }
 const ServiceContext = createContext<ServiceContextType | null>(null)
 
@@ -13,14 +12,12 @@ const ServiceContext = createContext<ServiceContextType | null>(null)
 
 const ServiceContextProvider = ({
     children,
-    services,
     servicesOverview
 }: ServiceContextType & { children: ReactNode }) => {
 
     return (
         <ServiceContext.Provider
             value={{
-                services,
                 servicesOverview
             }}
         >

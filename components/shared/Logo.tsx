@@ -1,22 +1,33 @@
+import { APP_NAME } from '@/constants/app.constants'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
-import React from 'react'
+import Link from 'next/link'
 
 const Logo = ({
-    className = ""
+    className = "",
+    link = false
 }) => {
     return (
-        <Image
-            src={'/assets/ts-logo-2.svg'}
-            height={50}
-            className={cn(
-                className,
-                "w-auto "
-            )}
-            width={50}
-            alt='T-l'
-        />
+        link ? <Link href={'/'}>
+            <LogoImage className={className} />
+        </Link>
+            : <LogoImage className={className} />
     )
+}
+
+const LogoImage = ({
+    className = "",
+}) => {
+    return <Image
+        src={'/assets/ts-logo.svg'}
+        className={cn(
+            className,
+            "w-auto "
+        )}
+        height={50}
+        width={50}
+        alt={`${APP_NAME} Logo`}
+    />
 }
 
 export default Logo

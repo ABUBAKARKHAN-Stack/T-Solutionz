@@ -9,10 +9,10 @@ import { cn } from '@/lib/utils';
 import ContainerLayout from '../ContainerLayout';
 import {
     ContactDrawer,
-    ThemeToggle
+    ThemeToggle,
+    Logo
 } from '@/components/shared';
 import { Button } from '@/components/ui/button';
-import Logo from '@/components/shared/Logo';
 
 type Props = {
     setOpen: Dispatch<SetStateAction<boolean>>;
@@ -49,16 +49,10 @@ const DesktopNav = ({ setOpen, open }: Props) => {
             transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
             <ContainerLayout className="flex h-20 items-center justify-between ">
-
-                <Link href="/" className="flex items-center gap-2 group">
-                    {/* <span
-                        className="text-2xl font-bold tracking-tight text-foreground"
-                        style={{ fontFamily: "'Playfair Display', serif" }}
-                    >
-                        T<span className="text-accent">-</span>Solutionz
-                    </span> */}
-                    <Logo className="h-12" />
-                </Link>
+                <Logo
+                    className="sm:h-12 h-10"
+                    link
+                />
                 <nav className="hidden lg:flex items-center gap-1">
 
                     {navLinks.map((link) => {

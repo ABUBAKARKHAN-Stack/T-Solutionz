@@ -11,6 +11,7 @@ import AnimatedSection from "./AnimatedSection";
 import CTASection from "./CTASection";
 import BlogCard from "./BlogCard";
 import PortfolioCard from "./PortfolioCard";
+import Logo from "./Logo";
 
 export {
     HighlightedBrandName,
@@ -26,5 +27,6 @@ export {
     AnimatedSection,
     CTASection,
     BlogCard,
-    PortfolioCard
+    PortfolioCard,
+    Logo
 }

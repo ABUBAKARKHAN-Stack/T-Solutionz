@@ -8,7 +8,6 @@ import { Send, Mail, ArrowUpRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import {
   Form,
   FormControl,
@@ -26,15 +25,10 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { toast } from "sonner";
+import { ContactFormValues, contactSchema } from "@/schemas/contact.schema";
+import { contactInfo } from "@/constants/navigation.constants";
+import Link from "next/link";
 
-const contactSchema = z.object({
-  name: z.string().trim().min(1, "Name is required").max(100, "Name must be under 100 characters"),
-  email: z.string().trim().email("Please enter a valid email").max(255, "Email must be under 255 characters"),
-  subject: z.string().trim().min(1, "Subject is required").max(200, "Subject must be under 200 characters"),
-  message: z.string().trim().min(1, "Message is required").max(1000, "Message must be under 1000 characters"),
-});
-
-type ContactFormValues = z.infer<typeof contactSchema>;
 
 interface ContactDrawerProps {
   children: React.ReactNode;
@@ -61,6 +55,8 @@ const ContactDrawer = ({ children }: ContactDrawerProps) => {
     }, 2000);
   };
 
+  const mailInfo = contactInfo.filter((info) => info.label.toLowerCase().trim() === "mail")[0]
+
   return (
     <Sheet open={open} onOpenChange={(v) => { setOpen(v); if (!v) { setTimeout(() => setSubmitted(false), 300); form.reset(); } }}>
       <SheetTrigger asChild>{children}</SheetTrigger>
@@ -71,7 +67,7 @@ const ContactDrawer = ({ children }: ContactDrawerProps) => {
               <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
               <span className="text-[10px] font-semibold text-accent uppercase tracking-[0.3em]">Quick Contact</span>
             </div>
-            <SheetTitle className="text-2xl font-bold text-foreground" style={{ fontFamily: "'Playfair Display', serif" }}>
+            <SheetTitle className="text-2xl font-bold text-foreground font-playfair">
               Let's <span className="text-accent italic">talk</span>
             </SheetTitle>
             <SheetDescription className="text-sm text-muted-foreground font-light">
@@ -174,7 +170,7 @@ const ContactDrawer = ({ children }: ContactDrawerProps) => {
                     </div>
                     <div>
                       <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Or email us directly</p>
-                      <p className="text-xs font-medium text-foreground">hello@t-solutions.com</p>
+                      <Link href={mailInfo.link} className="text-xs hover:text-accent transition-colors duration-300 font-medium text-foreground">{mailInfo.value}</Link>
                     </div>
                     <ArrowUpRight className="h-3 w-3 text-muted-foreground/40 ml-auto" />
                   </div>

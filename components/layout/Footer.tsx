@@ -1,10 +1,11 @@
 "use client"
 
-import { Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { contactInfo, navLinks } from "@/constants/navigation.constants";
 import Link from "next/link";
 import ContainerLayout from "./ContainerLayout";
 import { useServices } from "@/context/ServiceContext";
+import Logo from "../shared/Logo";
 import { APP_NAME } from "@/constants/app.constants";
 
 const Footer = () => {
@@ -16,9 +17,7 @@ const Footer = () => {
 
           {/* Brand */}
           <div className="lg:col-span-4">
-            <span className="text-3xl font-bold font-playfair" >
-              {APP_NAME}
-            </span>
+            <Logo className="lg:h-20 xsm:h-16 h-14" />
             <p className="text-foreground/50 mt-4 leading-relaxed max-w-sm text-sm">
               Building high-performance digital products with full stack development, cloud solutions, DevOps, and AI. We turn your ideas into scalable reality.
             </p>
@@ -82,7 +81,10 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-foreground/10 mt-16 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-foreground/30">© {new Date().getFullYear()} T-Solutions. All rights reserved.</p>
+          <p className="text-xs text-foreground/30">© {new Date().getFullYear()} {" "}
+          <span className="font-bold font-playfair text-accent">
+            {APP_NAME}
+            </span>. All rights reserved.</p>
           <div className="flex gap-6">
             <Link href="/privacy" className="text-xs text-foreground/30 hover:text-foreground/60 transition-colors">
               Privacy

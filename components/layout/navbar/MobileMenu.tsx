@@ -1,6 +1,10 @@
 "use client"
 
-import { ThemeToggle } from '@/components/shared'
+import {
+     ThemeToggle,
+    Logo
+
+ } from '@/components/shared'
 import { Button } from '@/components/ui/button'
 import { navLinks } from '@/constants/navigation.constants'
 import { useServices } from '@/context/ServiceContext'
@@ -35,7 +39,7 @@ const MobileMenu = ({
         setMounted(true)
     }, [])
 
-    if(!mounted) return;
+    if (!mounted) return;
     return (
         createPortal(
             <AnimatePresence>
@@ -57,14 +61,10 @@ const MobileMenu = ({
                             className=" fixed glass z-999 w-full">
                             <ContainerLayout className='flex justify-between w-full'>
 
-                                <Link href="/" className="flex items-center gap-2 group">
-                                    <span
-                                        className="text-2xl font-bold tracking-tight text-foreground"
-                                        style={{ fontFamily: "'Playfair Display', serif" }}
-                                    >
-                                        T<span className="text-accent">-</span>Solutionz
-                                    </span>
-                                </Link>
+                                <Logo
+                                    className='h-10'
+                                    link
+                                />
 
                                 <div className="flex items-center gap-2 lg:hidden">
                                     <ThemeToggle />

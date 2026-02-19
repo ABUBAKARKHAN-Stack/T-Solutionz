@@ -27,22 +27,22 @@ export const metadata: Metadata = {
     "We are a forward-thinking tech startup creating modern, scalable web and software solutions that combine creativity, technology, and strategy for success.",
   icons: {
     icon: [
-      { url: "/assets/favicons/favicon.ico", type: "image/png" },
-      { url: "/assets/favicons/favicon.svg", type: "image/svg+xml" },
+      { url: "/assets/brand/favicons/favicon.ico", type: "image/png" },
+      { url: "/assets/brand/favicons/favicon.svg", type: "image/svg+xml" },
       {
-        url: "/assets/favicons/favicon-32X32.png",
+        url: "/assets/brand/favicons/favicon-32X32.png",
         sizes: "32x32",
         type: "image/png",
       },
       {
-        url: "/assets/favicons/favicon-16X16.png",
+        url: "/assets/brand/favicons/favicon-16X16.png",
         sizes: "16x16",
         type: "image/png",
       },
     ],
     apple: [
       {
-        url: "/assets/favicons/apple-touch-icon.png",
+        url: "/assets/brand/favicons/apple-touch-icon.png",
         sizes: "180x180",
         type: "image/png",
       },

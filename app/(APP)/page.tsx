@@ -8,10 +8,10 @@ import {
   CTASection,
   FAQSection,
   PartnersSection,
-  CaseStudySection,
+  CaseStudySection as _,
   TestimonialsSection,
   WhyChooseUsSection,
-  BlogSection,
+  BlogSection as __,
   PortfolioSection,
 } from "@/components/sections/landing";
 
@@ -40,7 +40,7 @@ const HomePage = async () => {
       <TestimonialsSection />
 
       {/* Blogs Section  */}
-      <BlogSection />
+      {/* <BlogSection /> */}
 
       {/* Case Studies */}
       {/* <CaseStudySection /> */}

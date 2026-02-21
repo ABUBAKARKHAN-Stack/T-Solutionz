@@ -8,7 +8,6 @@ import { useServices } from "@/context/ServiceContext";
 import Logo from "../shared/Logo";
 import { APP_NAME } from "@/constants/app.constants";
 import { MagneticButton } from "../shared";
-import { getIconByName } from "@/lib/icon-mapper";
 import { cn } from "@/lib/utils";
 
 const Footer = () => {

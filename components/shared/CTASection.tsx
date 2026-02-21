@@ -29,13 +29,13 @@ const CTASection = ({ title, description, buttonText = "Book a Consultation", ex
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">{title}</h2>
           <p className="text-muted-foreground mb-10 max-w-md mx-auto font-light text-lg">{description}</p>
           <div className="flex flex-wrap justify-center gap-4">
-            <MagneticButton>
-              <ContactDrawer>
+            <ContactDrawer>
+              <MagneticButton>
                 <Button size="lg" className="rounded-full bg-foreground text-background hover:bg-foreground/90 text-sm px-10 h-12 font-medium">
                   {buttonText} <ArrowUpRight className="ml-2 h-4 w-4" />
                 </Button>
-              </ContactDrawer>
-            </MagneticButton>
+              </MagneticButton>
+            </ContactDrawer>
             {extraActions}
           </div>
         </AnimatedSection>

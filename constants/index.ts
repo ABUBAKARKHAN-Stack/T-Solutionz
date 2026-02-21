@@ -1,5 +1,5 @@
 import {
-  Code2, Smartphone, Cloud, Container, Brain, Shield, Users, Zap, Lightbulb, Globe, Target, Eye, Heart, Award, Clock, HeartHandshake, Sparkles, Search, Rocket
+  Code2, Cloud, Brain, Shield, Users, Zap, Lightbulb, Globe, Target, Eye, Heart, Award, Clock, HeartHandshake, Sparkles, Search, Rocket
 } from "lucide-react";
 
 

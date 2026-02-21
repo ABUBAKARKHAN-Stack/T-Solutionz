@@ -92,10 +92,8 @@ const DesktopNav = ({ setOpen, open }: Props) => {
                                         )}
 
                                         {isActive && (
-                                            <motion.div
+                                            <div
                                                 className="absolute inset-0 bg-accent/10 rounded-full"
-                                                layoutId="nav-pill"
-                                                transition={{ type: "spring", stiffness: 380, damping: 32 }}
                                             />
                                         )}
                                         <span className="relative z-10">{link.label}</span>

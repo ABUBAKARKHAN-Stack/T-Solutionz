@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Send, Mail, ArrowUpRight } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -28,6 +28,14 @@ import { toast } from "sonner";
 import { ContactFormValues, contactSchema } from "@/schemas/contact.schema";
 import { contactInfo } from "@/constants/navigation.constants";
 import Link from "next/link";
+import { useServices } from "@/context/ServiceContext";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from "../ui/select";
 
 
 interface ContactDrawerProps {
@@ -37,10 +45,11 @@ interface ContactDrawerProps {
 const ContactDrawer = ({ children }: ContactDrawerProps) => {
   const [open, setOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const { servicesOverview } = useServices()
 
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
-    defaultValues: { name: "", email: "", subject: "", message: "" },
+    defaultValues: { name: "", email: "", subject: "", message: "", service: "" },
   });
 
   const onSubmit = (data: ContactFormValues) => {
@@ -131,6 +140,35 @@ const ContactDrawer = ({ children }: ContactDrawerProps) => {
                       )}
                     />
                   </div>
+
+                  <FormField
+                    control={form.control}
+                    name="service"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-[10px] uppercase tracking-widest text-muted-foreground font-medium">Service Interested In</FormLabel>
+                        <Select onValueChange={field.onChange} value={field.value}>
+                          <FormControl>
+                            <SelectTrigger className="rounded-xl w-full bg-muted/30 border-border/50 h-11! focus:border-accent transition-colors text-sm">
+                              <SelectValue placeholder="Select a service" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent className="bg-popover border-border z-200">
+                            {servicesOverview.map((s) => (
+                              <SelectItem key={s.slug} value={s.title} className="text-sm focus:bg-accent/10">
+                                {s.title}
+                              </SelectItem>
+                            ))}
+                            <SelectItem value={"Other"} className="text-sm focus:bg-accent/10">
+                              Other
+                            </SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <FormMessage className="text-xs" />
+                      </FormItem>
+                    )}
+                  />
+
 
                   <FormField
                     control={form.control}

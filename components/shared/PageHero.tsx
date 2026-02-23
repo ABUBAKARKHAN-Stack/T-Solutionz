@@ -71,7 +71,7 @@ const PageHero = ({ eyebrow, title, description, backgroundImage, breadcrumbs, c
                     )}
                   </li>
                 ))}
-              </ol>
+              </ol> 
             </nav>
           )}
           {children}

@@ -16,7 +16,7 @@ const PORTFOLIO_OVERVIEW_QUERY = defineQuery(`*[_type == "portfolio"]{
 `)
 
 const PORTFOLIO_DATA_QUERY = defineQuery(`
- *[_type == "portfolio" == slug.current == $slug]{
+ *[_type == "portfolio" && slug.current == $slug][0]{
   _id,
   title,
   "slug": slug.current,
@@ -49,15 +49,15 @@ export const getPortfolioOverview = async () => {
 }
 
 
-export const getServiceDetails = async (slug: string) => {
+export const getProjectDetails = async (slug: string) => {
     try {
         const { data } = await sanityFetch({
             query: PORTFOLIO_DATA_QUERY,
             params: { slug },
             perspective: "published"
         })
-        const services = data as IPortfolio
-        return services ?? null
+        const project = data as IPortfolio
+        return project ?? null
     } catch (error) {
         console.log("Failed to fetch portfolio from sanity :: ", error);
         throw error

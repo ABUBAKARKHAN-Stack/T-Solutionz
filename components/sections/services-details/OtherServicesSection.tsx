@@ -3,14 +3,16 @@ import { ContainerLayout } from '@/components/layout';
 import { AnimatedSection, SectionHeader } from '@/components/shared';
 import { useServices } from '@/context/ServiceContext';
 import { getIconByName } from '@/lib/icon-mapper';
+import { getPreviewImageUrl } from '@/lib/transformed-img-urls';
 import { urlFor } from '@/sanity/lib/image';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 
 const OtherServicesSection = () => {
     const { servicesOverview } = useServices()
     const { slug } = useParams()
-    const otherServices = servicesOverview.filter(s => s.slug !== slug);
+    const otherServices = servicesOverview.filter(s => s.slug !== slug).slice(0,3);
 
     return (
         <section className="section-padding bg-card/30">
@@ -24,14 +26,13 @@ const OtherServicesSection = () => {
                                 <Link href={`/services/${s.slug}`} className="group block">
                                     <div className="rounded-2xl overflow-hidden bg-card border border-border/40 hover:border-accent/40 transition-all duration-500 shadow-sm">
                                         <div className="relative h-36 overflow-hidden">
-                                            <img
-                                                src={
-                                                    urlFor(s.image.source)
-                                                        .quality(75)
-                                                        .url()
-                                                }
+                                            <Image
+                                                src={getPreviewImageUrl(s.image.source)}
                                                 alt={s.image.alt}
-                                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+                                                fill   
+                                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                                 loading="lazy"
+                                                  />
                                             <div className="absolute inset-0 bg-linear-to-t from-card via-card/50 to-transparent" />
                                         </div>
                                         <div className="p-6">

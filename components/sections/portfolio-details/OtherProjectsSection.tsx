@@ -1,6 +1,7 @@
 "use client"
 import { ContainerLayout } from '@/components/layout'
 import { AnimatedSection, SectionHeader } from '@/components/shared'
+import { APP_NAME } from '@/constants/app.constants'
 import { usePortfolio } from '@/context/PortfolioContext'
 import { getPreviewImageUrl } from '@/lib/transformed-img-urls'
 import Image from 'next/image'
@@ -31,7 +32,7 @@ const OtherProjectsSection = () => {
                                         <Image
                                             src={getPreviewImageUrl(p.image.source)}
                                             fill
-                                            alt={p.title}
+                                            alt={`${p.title} – Screenshot of the project created by ${APP_NAME}`}
                                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                                             loading="lazy"
                                         />

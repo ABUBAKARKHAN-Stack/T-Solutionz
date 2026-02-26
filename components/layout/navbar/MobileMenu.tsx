@@ -87,95 +87,98 @@ const MobileMenu = ({
                             transition={{ delay: 0.1 }}
                         >
 
-                            {navLinks.map((link, i) => (
-                                <motion.div
-                                    key={link.to}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.25 + i * 0.05 }}
-                                    className="flex flex-col items-center w-full max-w-xs"
-                                >
-                                    {link.hasDropdown ? (
-                                        <>
-                                            <div className="flex items-center h-full gap-3">
-                                                <Link
-                                                    href={link.to}
-                                                    onClick={() => setOpen(false)}
-                                                    className={cn(
-                                                        "text-3xl font-playfair font-semibold transition-colors",
-                                                        pathname === link.to
-                                                            ? "text-accent"
-                                                            : "text-foreground/60 hover:text-foreground"
+                            {navLinks.map((link, i) => {
+                                const isActive = pathname === link.to || (link.to !== "/" && pathname.startsWith(link.to))
+                                return (
+                                    <motion.div
+                                        key={link.to}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.25 + i * 0.05 }}
+                                        className="flex flex-col items-center w-full max-w-xs"
+                                    >
+                                        {link.hasDropdown ? (
+                                            <>
+                                                <div className="flex items-center h-full gap-3">
+                                                    <Link
+                                                        href={link.to}
+                                                        onClick={() => setOpen(false)}
+                                                        className={cn(
+                                                            "text-3xl font-playfair font-semibold transition-colors",
+                                                            isActive
+                                                                ? "text-accent"
+                                                                : "text-foreground/60 hover:text-foreground"
+                                                        )}
+                                                    >
+                                                        {link.label}
+                                                    </Link>
+                                                    <Button
+                                                        type="button"
+                                                        onClick={() => setMobileServices(!mobileServices)}
+                                                        className="w-9 h-9 rounded-full bg-accent/10 flex items-center hover:bg-accent/20 justify-center active:scale-90 transition-transform"
+                                                    >
+                                                        <motion.div
+                                                            animate={{ rotate: mobileServices ? 180 : 0 }}
+                                                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                                                        >
+                                                            <ChevronDown className="h-5 w-5 text-accent" />
+                                                        </motion.div>
+                                                    </Button>
+                                                </div>
+                                                <AnimatePresence>
+                                                    {mobileServices && (
+                                                        <motion.div
+                                                            className="mt-4 grid grid-cols-2 gap-2 w-full bg-card/80 backdrop-blur-md rounded-2xl border border-border/50 p-3 overflow-hidden"
+                                                            initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                                                            animate={{ opacity: 1, height: "auto", marginTop: 16 }}
+                                                            exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                                                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                                                        >
+                                                            {servicesOverview.map((item) => {
+                                                                const Icon = getIconByName(item.icon)
+                                                                return (
+                                                                    <Link
+                                                                        key={item._id}
+                                                                        href={`/services/${item.slug}`}
+                                                                        onClick={() => { setOpen(false); setMobileServices(false); }}
+                                                                        className="flex items-center gap-2 p-2.5 rounded-xl hover:bg-accent/10 active:bg-accent/15 transition-colors"
+                                                                    >
+                                                                        <div className="w-7 h-7 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
+                                                                            <Icon className="h-3.5 w-3.5 text-accent" />
+                                                                        </div>
+                                                                        <div className="min-w-0">
+                                                                            <p className="text-xs font-medium text-foreground leading-tight">
+                                                                                {item.title}
+                                                                            </p>
+                                                                            <p className="text-[10px] text-muted-foreground/80 mt-0.5 leading-snug">
+                                                                                {item.overviewLabel}
+                                                                            </p>
+                                                                        </div>
+                                                                    </Link>
+                                                                )
+                                                            })}
+                                                        </motion.div>
                                                     )}
-                                                >
-                                                    {link.label}
-                                                </Link>
-                                                <Button
-                                                    type="button"
-                                                    onClick={() => setMobileServices(!mobileServices)}
-                                                    className="w-9 h-9 rounded-full bg-accent/10 flex items-center hover:bg-accent/20 justify-center active:scale-90 transition-transform"
-                                                >
-                                                    <motion.div
-                                                        animate={{ rotate: mobileServices ? 180 : 0 }}
-                                                        transition={{ duration: 0.3, ease: "easeInOut" }}
-                                                    >
-                                                        <ChevronDown className="h-5 w-5 text-accent" />
-                                                    </motion.div>
-                                                </Button>
-                                            </div>
-                                            <AnimatePresence>
-                                                {mobileServices && (
-                                                    <motion.div
-                                                        className="mt-4 grid grid-cols-2 gap-2 w-full bg-card/80 backdrop-blur-md rounded-2xl border border-border/50 p-3 overflow-hidden"
-                                                        initial={{ opacity: 0, height: 0, marginTop: 0 }}
-                                                        animate={{ opacity: 1, height: "auto", marginTop: 16 }}
-                                                        exit={{ opacity: 0, height: 0, marginTop: 0 }}
-                                                        transition={{ duration: 0.3, ease: "easeInOut" }}
-                                                    >
-                                                        {servicesOverview.map((item) => {
-                                                            const Icon = getIconByName(item.icon)
-                                                            return (
-                                                                <Link
-                                                                    key={item._id}
-                                                                    href={`/services/${item.slug}`}
-                                                                    onClick={() => { setOpen(false); setMobileServices(false); }}
-                                                                    className="flex items-center gap-2 p-2.5 rounded-xl hover:bg-accent/10 active:bg-accent/15 transition-colors"
-                                                                >
-                                                                    <div className="w-7 h-7 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
-                                                                        <Icon className="h-3.5 w-3.5 text-accent" />
-                                                                    </div>
-                                                                    <div className="min-w-0">
-                                                                        <p className="text-xs font-medium text-foreground leading-tight">
-                                                                            {item.title}
-                                                                        </p>
-                                                                        <p className="text-[10px] text-muted-foreground/80 mt-0.5 leading-snug">
-                                                                            {item.overviewLabel}
-                                                                        </p>
-                                                                    </div>
-                                                                </Link>
-                                                            )
-                                                        })}
-                                                    </motion.div>
-                                                )}
-                                            </AnimatePresence>
-                                        </>
-                                    ) : (
-                                        <Link
-                                            href={link.to}
-                                            onClick={() => setOpen(false)}
-                                            className={cn(
-                                                "text-3xl font-playfair font-semibold transition-colors",
-                                                pathname === link.to
-                                                    ? "text-accent"
-                                                    : "text-foreground/60 hover:text-foreground"
+                                                </AnimatePresence>
+                                            </>
+                                        ) : (
+                                            <Link
+                                                href={link.to}
+                                                onClick={() => setOpen(false)}
+                                                className={cn(
+                                                    "text-3xl font-playfair font-semibold transition-colors",
+                                                    isActive
+                                                        ? "text-accent"
+                                                        : "text-foreground/60 hover:text-foreground"
 
-                                            )}
-                                        >
-                                            {link.label}
-                                        </Link>
-                                    )}
-                                </motion.div>
-                            ))}
+                                                )}
+                                            >
+                                                {link.label}
+                                            </Link>
+                                        )}
+                                    </motion.div>
+                                )
+                            })}
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}

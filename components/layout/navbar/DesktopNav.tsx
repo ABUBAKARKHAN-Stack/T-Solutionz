@@ -61,7 +61,7 @@ const DesktopNav = ({ setOpen, open }: Props) => {
                     <LayoutGroup id='nav-pills'>
 
                         {navLinks.map((link) => {
-                            const isActive = pathname === link.to;
+                            const isActive = pathname === link.to || (link.to !== "/" && pathname.startsWith(link.to));
                             return (
                                 <div
                                     key={link.to}

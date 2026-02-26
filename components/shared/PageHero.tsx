@@ -33,6 +33,7 @@ const PageHero = ({ eyebrow, title, description, backgroundImage, breadcrumbs, c
     <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
       {backgroundImage ? (
         <div className="absolute inset-0">
+          <div className="h-20 absolute inset-0 z-10 glass" />
           <Image
             fill
             src={

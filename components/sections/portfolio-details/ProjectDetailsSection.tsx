@@ -27,11 +27,11 @@ const ProjectDetailsSection: FC<Props> = ({
     return (
         <section className="section-padding bg-background">
             <ContainerLayout>
-                <div className="grid grid-cols-1 lg:grid-cols-5 gap-16">
+                <div className="grid grid-cols-1 gap-y-16">
                     {/* Main Content */}
-                    <AnimatedSection className="lg:col-span-3">
+                    <AnimatedSection>
                         <h2 className="text-2xl font-bold text-foreground mb-6">The Challenge & Solution</h2>
-                        <div className="space-y-4">
+                        <div className="space-y-4 max-w-5xl">
                             {longDescription.split("\n\n").map((paragraph, i) => (
                                 <p key={i} className="text-muted-foreground leading-relaxed font-light text-base">
                                     {paragraph}
@@ -40,7 +40,7 @@ const ProjectDetailsSection: FC<Props> = ({
                         </div>
 
                         {/* Project Screenshot */}
-                        <div className="rounded-2xl mt-4 overflow-hidden border border-border/40 shadow-lg">
+                        <div className="rounded-2xl mt-6 overflow-hidden border border-border/40 shadow-lg shadow-accent/10">
                             <Image
                                 src={
                                     urlFor(image.source)

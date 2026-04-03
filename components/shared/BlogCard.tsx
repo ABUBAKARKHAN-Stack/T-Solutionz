@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 import { itemVariants } from "./StaggerChildren";
 import { ArrowUpRight, Clock } from "lucide-react";
 import Image from "next/image";
-import CardCategoryBadge from "./CardsTopBadge";
+import CardCategoryBadge from "./CardMetaDataBadge";
 type Props = {
   post: {
     title: string;

@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-const CardsTopBadge = ({
+const CardMetaDataBadge = ({
   label,
   className,
 }: {
@@ -19,4 +19,4 @@ const CardsTopBadge = ({
   );
 };
 
-export default CardsTopBadge;
+export default CardMetaDataBadge;

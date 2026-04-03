@@ -7,7 +7,7 @@ import Image from "next/image";
 import { APP_NAME } from "@/constants/app.constants";
 import { ArrowUpRight } from "lucide-react";
 import { getPreviewImageUrl } from "@/lib/transformed-img-urls";
-import CardTopBadge from "./CardsTopBadge";
+import CardMetaDataBadge from "./CardMetaDataBadge";
 
 type Props = {
   project: IPortfolioOverview;
@@ -33,21 +33,26 @@ const PortfolioCard = ({ project }: Props) => {
 
             <div className="from-card/60 absolute inset-0 bg-linear-to-t to-transparent" />
 
-            {/* Category badge */}
-            <CardTopBadge
-              label={project.category}
-              className="absolute top-4 left-4"
-            />
 
-            {/* Year */}
-            <CardTopBadge
-              className="absolute top-4 right-4 px-2 py-1"
-              label={project.year}
-            />
           </div>
 
           {/* Content */}
           <div className="flex flex-col p-6">
+
+            <div className="flex justify-between mb-4">
+              {/* Category badge */}
+              <CardMetaDataBadge
+                label={project.category}
+              // className="absolute top-4 left-4"
+              />
+
+              {/* Year */}
+              <CardMetaDataBadge
+                className=" px-2 py-1"
+                label={project.year}
+              />
+            </div>
+
             <h3 className="text-foreground group-hover:text-accent font-playfair mb-2 text-lg leading-snug font-semibold transition-colors duration-300">
               {project.title}
             </h3>

@@ -20,7 +20,7 @@ export const team = [
     name: "Abubakar Aijaz",
     role: "CTO & Co-Founder",
     initials: "AA",
-    image: "/assets/team/abubakar.jpg",
+    image: "/assets/team/abubakar.png",
     bio: "Full-Stack Engineer and technology leader specializing in scalable software architecture, distributed systems, and modern web platforms. Experienced in building enterprise-grade applications using JavaScript/TypeScript and Python ecosystems, with strong expertise in microservices, Kafka, and cloud-ready system design.",
     linkedin: "https://www.linkedin.com/in/abubakar-aijaz-dev",
     twitter: "https://x.com/abubakar_stacky",
